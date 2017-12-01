@@ -10,10 +10,10 @@ namespace JIRA_Bug_List_Creator
     class HTMLCreator
     {
         // string to hold the HTML
-        private string _strHTML = "";
+        private string strHTML = "";
 
         // string to hold the current project
-        private string _currentProject = "";
+        private string currentProject = "";
 
         // string to determine first project
         private Boolean isFirstProject = true;
@@ -22,31 +22,31 @@ namespace JIRA_Bug_List_Creator
         {
             get
             {
-                return _strHTML;
+                return this.strHTML;
             }
             set
             {
-                _strHTML = value;
+                this.strHTML = value;
             }
         }
 
-        public string currentProject
+        public string Project
         {
             get
             {
-                return _currentProject;
+                return this.currentProject;
             }
             set
             {
-                _currentProject = value;
+                this.currentProject = value;
             }
         }
 
         // constructor
         public HTMLCreator()
         {
-            _strHTML = "";
-            _currentProject = "";
+            this.strHTML = "";
+            this.currentProject = "";
         }
 
         public string constructHTMLString(List<JIRAIssue> issues)
@@ -64,7 +64,7 @@ namespace JIRA_Bug_List_Creator
             foreach (JIRAIssue issue in issues)
             {
                 // check for a new project... (should be valid even for the first issue)
-                if (issue.Project != _currentProject)
+                if (issue.Project != this.currentProject)
                 {
                     if (isFirstProject == true)
                     {
@@ -73,21 +73,21 @@ namespace JIRA_Bug_List_Creator
                     }
                     else
                     {
-                        _strHTML += "<br/><br/>";
+                        this.strHTML += "<br/><br/>";
                     }
                     
                     // set _currentProject with the current issue's project value
-                    _currentProject = issue.Project;
+                    this.currentProject = issue.Project;
 
                     // create the title
-                    _strHTML += constructProjectTitle(_currentProject);
+                    this.strHTML += constructProjectTitle(this.currentProject);
                 }
 
                 // create issue
-                _strHTML += constructIssue(issue.Link, issue.Key, issue.Summary, issue.Priority);
+                this.strHTML += constructIssue(issue.Link, issue.Key, issue.Summary, issue.Priority);
             }
 
-            return _strHTML;
+            return this.strHTML;
         }
 
         public string constructProjectTitle(string project)

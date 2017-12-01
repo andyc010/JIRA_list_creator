@@ -18,13 +18,13 @@ namespace JIRA_Bug_List_Creator
          * 
         */
 
-        private XmlDocument _xmlDoc = new XmlDocument();    
+        private XmlDocument xmlDoc = new XmlDocument();    
 
         // setter function
         public XmlDocument xmld 
         {
-            get { return _xmlDoc; }
-            set { _xmlDoc = value; }        
+            get { return this.xmlDoc; }
+            set { this.xmlDoc = value; }        
         }
 
         // class constructor
@@ -38,9 +38,9 @@ namespace JIRA_Bug_List_Creator
         {
             List<JIRAIssue> JIRAIssues = new List<JIRAIssue>();
 
-            _xmlDoc.Load(xmlFile);
+            this.xmlDoc.Load(xmlFile);
 
-            XmlNodeList itemNodes = _xmlDoc.SelectNodes("//rss/channel/item");
+            XmlNodeList itemNodes = this.xmlDoc.SelectNodes("//rss/channel/item");
 
             foreach (XmlNode node in itemNodes)
             {

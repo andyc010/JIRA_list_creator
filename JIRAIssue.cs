@@ -19,11 +19,11 @@ namespace JIRA_Bug_List_Creator
         {
             get
             {
-                return strLinkURL;
+                return this.strLinkURL;
             }
             set
             {
-                strLinkURL = value;
+                this.strLinkURL = value;
             }
         }
 
@@ -31,11 +31,11 @@ namespace JIRA_Bug_List_Creator
         {
             get
             {
-                return strProject;
+                return this.strProject;
             }
             set
             {
-                strProject = value;
+                this.strProject = value;
             }
         }
 
@@ -43,11 +43,11 @@ namespace JIRA_Bug_List_Creator
         {
             get
             {
-                return strKey;
+                return this.strKey;
             }
             set
             {
-                strKey = value;
+                this.strKey = value;
             }
         }
 
@@ -55,11 +55,11 @@ namespace JIRA_Bug_List_Creator
         {
             get
             {
-                return strSummary;
+                return this.strSummary;
             }
             set
             {
-                strSummary = value;
+                this.strSummary = value;
             }
         }
 
@@ -67,95 +67,21 @@ namespace JIRA_Bug_List_Creator
         {
             get
             {
-                return strPriority;
+                return this.strPriority;
             }
             set
             {
-                strPriority = value;
+                this.strPriority = value;
             }
         }
-
         
         public JIRAIssue(string link, string project, string key, string summary, string priority)
         {
-            strLinkURL = link;
-            strKey = key;
-            strProject = project;
-            strSummary = summary;
-            strPriority = priority;
-        }
-
-        /*
-        // custom collection class - is this necessary?
-        public class JIRA_Issues : IEnumerable
-        {
-            private JIRAIssue[] _JIRA_Issues;
-
-            public JIRA_Issues(JIRAIssue[] jiraIssueArray)
-            {
-                _JIRA_Issues = new JIRAIssue[jiraIssueArray.Length];
-
-                for (int i = 0; i < jiraIssueArray.Length; i++)
-                {
-                    _JIRA_Issues[i] = jiraIssueArray[i];
-                }
-            }
-
-            IEnumerator IEnumerable.GetEnumerator()
-            {
-                return (IEnumerator)GetEnumerator();
-            }
-
-            public jiraIssuesEnum GetEnumerator()
-            {
-                return new jiraIssuesEnum(_JIRA_Issues);
-            }
-        }
-
-        public class jiraIssuesEnum : IEnumerator
-        {
-            public JIRAIssue[] _jiraIssues;
-
-            int position = -1;
-
-            public jiraIssuesEnum(JIRAIssue[] list)
-            {
-                _jiraIssues = list;
-            }
-
-            public bool MoveNext()
-            {
-                position++;
-                return (position < _jiraIssues.Length);
-            }
-
-            public void Reset()
-            {
-                position = -1;
-            }
-
-            object IEnumerator.Current
-            {
-                get
-                {
-                    return Current;
-                }
-            }
-
-            public JIRAIssue Current
-            {
-                get
-                {
-                    try
-                    {
-                        return _jiraIssues[position];
-                    }
-                    catch (IndexOutOfRangeException)
-                    {
-                        throw new InvalidOperationException();
-                    }
-                }
-            }
-            */
+            this.strLinkURL = link;
+            this.strKey = key;
+            this.strProject = project;
+            this.strSummary = summary;
+            this.strPriority = priority;
+        }        
     }
 }
