@@ -42,7 +42,7 @@ namespace JIRA_Bug_List_Creator
                 XML_manipulator xmlManipulator = new XML_manipulator();
                 HTMLCreator htmlCreator = new HTMLCreator();
 
-                finalHTMLstring = htmlCreator.constructHTMLString(xmlManipulator.createIntermediateDoc(opnFileDialog.FileName));
+                finalHTMLstring = htmlCreator.constructHTMLString(xmlManipulator.createProjectsList(opnFileDialog.FileName));
 
                 lblFilename.Content = opnFileDialog.SafeFileName;
                 wbCopyText.NavigateToString(finalHTMLstring);

@@ -10,7 +10,7 @@ namespace JIRA_Bug_List_Creator
     public class JIRAIssue
     {        
         private string strLinkURL;  // the actual URL of the JIRA issue - e.g. https://.../browse/QA-1234
-        private string strProject;  // the project for the JIRA issue - e.g. Smoothie Blast
+        //private string strProject;  // the project for the JIRA issue - e.g. Smoothie Blast
         private string strKey;  // the key or identifier for the JIRA issue - e.g. QA-1234
         private string strSummary;  // the summary or title of the JIRA issue - e.g. "The game does not start after inserting money."
         private string strPriority; // the priority of an issue - e.g. Major
@@ -27,6 +27,7 @@ namespace JIRA_Bug_List_Creator
             }
         }
 
+        /*
         public string Project
         {
             get
@@ -38,6 +39,7 @@ namespace JIRA_Bug_List_Creator
                 this.strProject = value;
             }
         }
+        */
 
         public string Key
         {
@@ -74,14 +76,22 @@ namespace JIRA_Bug_List_Creator
                 this.strPriority = value;
             }
         }
-        
-        public JIRAIssue(string link, string project, string key, string summary, string priority)
+
+        /*public JIRAIssue(string link, string project, string key, string summary, string priority)
         {
             this.strLinkURL = link;
             this.strKey = key;
-            this.strProject = project;
+            //this.strProject = project;
             this.strSummary = summary;
             this.strPriority = priority;
-        }        
+        }*/
+
+        public JIRAIssue(string link, string key, string summary, string priority)
+        {
+            this.strLinkURL = link;
+            this.strKey = key;
+            this.strSummary = summary;
+            this.strPriority = priority;
+        }
     }
 }

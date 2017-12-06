@@ -12,11 +12,11 @@ namespace JIRA_Bug_List_Creator
         // string to hold the HTML
         private string strHTML = "";
 
-        // string to hold the current project
-        private string currentProject = "";
-
         // string to determine first project
         private Boolean isFirstProject = true;
+
+        // OLD: string to hold the current project
+        //private string currentProject = "";        
 
         public string HTMLString
         {
@@ -30,61 +30,102 @@ namespace JIRA_Bug_List_Creator
             }
         }
 
-        public string Project
-        {
-            get
-            {
-                return this.currentProject;
-            }
-            set
-            {
-                this.currentProject = value;
-            }
-        }
+        // OLD CODE
+        //public string Project
+        //{
+        //    get
+        //    {
+        //        return this.currentProject;
+        //    }
+        //    set
+        //    {
+        //        this.currentProject = value;
+        //    }
+        //}
 
-        // constructor
-        public HTMLCreator()
-        {
-            this.strHTML = "";
-            this.currentProject = "";
-        }
+        // OLD: constructor
+        //public HTMLCreator()
+        //{
+        //    this.strHTML = "";
+        //    this.currentProject = "";
+        //}
 
-        public string constructHTMLString(List<JIRAIssue> issues)
-        {            
+        // OLD CODE
+        //public string constructHTMLString(List<JIRAIssue> issues)
+        //{            
+        //    /*
+        //     * Pseudocode for algorithm on what exactly to print out
+        //     * 
+        //     * 1) Check project
+        //     * 2) If project is new, print out the project title
+        //     * 3) Print out the issue
+        //     * 4) Go to the next issue & back to Step 1
+        //     * 
+        //     */
+
+        //    foreach (JIRAIssue issue in issues)
+        //    {
+        //        // check for a new project... (should be valid even for the first issue)
+        //        if (issue.Project != this.currentProject)
+        //        {
+        //            if (isFirstProject == true)
+        //            {
+        //                // set it to false
+        //                isFirstProject = false;
+        //            }
+        //            else
+        //            {
+        //                this.strHTML += "<br/><br/>";
+        //            }
+
+        //            // set _currentProject with the current issue's project value
+        //            this.currentProject = issue.Project;
+
+        //            // create the title
+        //            this.strHTML += constructProjectTitle(this.currentProject);
+        //        }
+
+        //        // create issue
+        //        this.strHTML += constructIssue(issue.Link, issue.Key, issue.Summary, issue.Priority);
+        //    }
+
+        //    return this.strHTML;
+        //}
+
+        public string constructHTMLString(List<Project> projects)
+        {
             /*
-             * Pseudocode for algorithm on what exactly to print out
-             * 
-             * 1) Check project
-             * 2) If project is new, print out the project title
-             * 3) Print out the issue
-             * 4) Go to the next issue & back to Step 1
+             * Pseudocode on what to print out
+             * 1) For each project...
+             * 1a) ...print the project in a title
+             * 1b) ...start the ordered list (<ol>)
+             * 1c) ...print all the JIRA issues for the project
+             * 1d) ...stop the ordered list (</ol>)
              * 
              */
 
-            foreach (JIRAIssue issue in issues)
+            foreach (Project singleProject in projects)
             {
-                // check for a new project... (should be valid even for the first issue)
-                if (issue.Project != this.currentProject)
+                // need page breaks between projects except the first one
+                if (isFirstProject == true)
                 {
-                    if (isFirstProject == true)
-                    {
-                        // set it to false
-                        isFirstProject = false;
-                    }
-                    else
-                    {
-                        this.strHTML += "<br/><br/>";
-                    }
-                    
-                    // set _currentProject with the current issue's project value
-                    this.currentProject = issue.Project;
-
-                    // create the title
-                    this.strHTML += constructProjectTitle(this.currentProject);
+                    // set variable to false
+                    isFirstProject = false;
+                }
+                else
+                {
+                    this.strHTML += "<br/><br/>";
                 }
 
-                // create issue
-                this.strHTML += constructIssue(issue.Link, issue.Key, issue.Summary, issue.Priority);
+                this.strHTML += constructProjectTitle(singleProject.ProjectName) + "<ol>";
+
+                foreach (JIRAIssue singleIssue in singleProject.Issues)
+                {
+                    this.strHTML += constructIssue(singleIssue.Link, singleIssue.Key, singleIssue.Summary, singleIssue.Priority);
+                }
+
+                // put the closing ordered list tag at the end
+                this.strHTML += "</ol>";
             }
 
             return this.strHTML;
@@ -107,7 +148,7 @@ namespace JIRA_Bug_List_Creator
 
             string issue = "";
 
-            issue = "<li><b><a href=\"" + link + "\">" + key + "</a>" + " - (" + priority + ") " + summary + "</b><br/>"; 
+            issue = "<li><b><a href=\"" + link + "\">" + key + "</a>" + " - (" + priority + ") " + summary + "</b></li><br/>"; 
 
             return issue;
         }
