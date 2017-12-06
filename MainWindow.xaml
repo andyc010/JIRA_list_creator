@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JIRA_Bug_List_Creator"
         mc:Ignorable="d"
-        Title="JIRA Bug List Creator" Height="1066.319" Width="525" >
+        Title="JIRA Bug List Creator" Height="750" Width="525" Background="DarkGray">
     <Grid>
         <Label Content="File:" HorizontalAlignment="Left" Height="34" Margin="49,54,0,0" VerticalAlignment="Top" Width="71" FontFamily="Arial" FontWeight="Bold" FontSize="20"/>
         <Label Name="lblFilename" Content="(nothing selected)" HorizontalAlignment="Left" Height="34" Margin="125,54,0,0" VerticalAlignment="Top" Width="300" FontFamily="Arial" FontWeight="Bold" FontSize="14"/>
@@ -17,7 +17,7 @@
                 </Paragraph>
             </FlowDocument>
         </RichTextBox> -->
-        <WebBrowser Name="wbCopyText" HorizontalAlignment="Left" Height="423" Margin="71,170,0,0" VerticalAlignment="Top" Width="388">
+        <WebBrowser Name="wbCopyText" HorizontalAlignment="Left" Height="423" Margin="63,170,0,0" VerticalAlignment="Top" Width="388">
             
         </WebBrowser>
     </Grid>

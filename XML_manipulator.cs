@@ -14,7 +14,7 @@ namespace JIRA_Bug_List_Creator
         /* 
          * Prerequisites for using the class:
          * 1) The XML document must have an node "item"
-         * EDIT: Komal is not doing this -> 2) Items are ordered by project, then by priority, then creation date
+         * EDIT: Not doing this, so changes need to be made in the code -> 2) Items are ordered by project, then by priority, then creation date
          * 
         */
 
